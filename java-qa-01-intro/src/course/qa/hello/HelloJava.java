@@ -1,5 +1,7 @@
 package course.qa.hello;
 
+import course.qa.formatter.HelloFormatter;
+
 import java.util.Scanner;
 
 public class HelloJava {
@@ -7,6 +9,7 @@ public class HelloJava {
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter your name:");
         String name = sc.nextLine();
-        System.out.println("Hello " + name + ", from java 11!");
+        HelloFormatter hf = new HelloFormatter();
+        System.out.println(hf.format(name));
     }
 }
