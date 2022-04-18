@@ -8,5 +8,6 @@ public class HelloJava {
         System.out.println("Enter your name:");
         String name = sc.nextLine();
         System.out.println("Hello " + name + ", from java 11!");
+        more errors here!!!
     }
 }
