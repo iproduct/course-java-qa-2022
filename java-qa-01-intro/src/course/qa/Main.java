@@ -26,7 +26,7 @@ public class Main {
         // Create UserRepository
         IdGenerator<Long> longIdGenerator = new LongIdGenerator();
         UserRepository userRepo = new UserRepositoryMemoryImpl(longIdGenerator);
-//        users.forEach(user -> userRepo.create(user));
+        users.forEach(user -> userRepo.create(user));
         users.forEach(userRepo::create);
 
 //        for(User user: userRepo.findAll()){
