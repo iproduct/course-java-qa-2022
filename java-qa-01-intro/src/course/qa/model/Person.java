@@ -1,8 +1,10 @@
 package course.qa.model;
 
+import course.qa.dao.Identifiable;
+
 import java.util.StringJoiner;
 
-public class Person {
+public class Person implements Identifiable<Long> {
     private Long id;
     private String firstName;
     private String lastName;

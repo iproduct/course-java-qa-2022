@@ -1,5 +1,7 @@
 package course.qa.model;
 
+import course.qa.dao.Identifiable;
+
 import java.util.StringJoiner;
 
 import static course.qa.model.Role.READER;
