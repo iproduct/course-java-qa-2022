@@ -6,7 +6,6 @@ import course.qa.dao.impl.LongIdGenerator;
 import course.qa.dao.impl.UserRepositoryMemoryImpl;
 import course.qa.exception.InvalidEntityDataException;
 import course.qa.exception.NonexistingEntityException;
-import course.qa.model.Person;
 import course.qa.model.Role;
 import course.qa.model.User;
 import course.qa.service.UserService;
