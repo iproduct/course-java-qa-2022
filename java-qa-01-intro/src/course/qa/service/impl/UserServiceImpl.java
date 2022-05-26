@@ -1,11 +1,12 @@
 package course.qa.service.impl;
 
 import course.qa.dao.UserRepository;
-import course.qa.exception.EntityNotFoundException;
+import course.qa.exception.NonexistingEntityException;
 import course.qa.model.User;
 import course.qa.service.UserService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
@@ -20,24 +21,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) throws EntityNotFoundException {
+    public User getUserById(Long id) throws NonexistingEntityException {
         return userRepo.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("User with ID='" + id + "' not found"));
+                () -> new NonexistingEntityException("User with ID='" + id + "' not found"));
     }
 
     @Override
     public User addUser(User user) {
-        return null;
+        return userRepo.create(user);
     }
 
     @Override
     public List<User> addUsersBatch(List<User> users) {
-        return null;
+        return users.stream().map(userRepo::create).collect(Collectors.toList());
     }
 
     @Override
-    public User updateUser(User user) {
-        return null;
+    public User updateUser(User user) throws NonexistingEntityException {
+        return userRepo.update(user)
+                .orElseThrow(() -> new NonexistingEntityException("User does not exist: " + user));
     }
 
     @Override
