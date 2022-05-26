@@ -1,6 +1,5 @@
 package course.qa.service;
 
-import course.qa.exception.EntityNotFoundException;
 import course.qa.exception.NonexistingEntityException;
 import course.qa.model.User;
 
@@ -12,6 +11,6 @@ public interface UserService {
     User addUser(User user);
     List<User> addUsersBatch(List<User> users);
     User updateUser(User user) throws NonexistingEntityException;
-    User deleteUserById(Long id);
+    User deleteUserById(Long id) throws NonexistingEntityException;
     long count();
 }

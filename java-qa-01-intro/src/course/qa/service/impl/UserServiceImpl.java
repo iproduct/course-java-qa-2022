@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) throws NonexistingEntityException {
         return userRepo.findById(id).orElseThrow(
-                () -> new NonexistingEntityException("User with ID='" + id + "' not found"));
+                () -> new NonexistingEntityException("User with ID='" + id + "' does not exist"));
     }
 
     @Override
@@ -43,12 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User deleteUserById(Long id) {
-        return null;
+    public User deleteUserById(Long id) throws NonexistingEntityException {
+        return userRepo.deleteById(id)
+                .orElseThrow(() -> new NonexistingEntityException("User with ID='" + id + "' does not exist"));
     }
 
     @Override
     public long count() {
-        return 0;
+        return userRepo.count();
     }
 }
