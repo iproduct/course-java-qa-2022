@@ -47,7 +47,11 @@ public class Main {
 //            System.out.println(user);
 //        }
 //        userRepo.findAll().forEach(user -> System.out.println(user));
-        userService.getAllUsers().forEach(System.out::println);
+//        userService.getAllUsers().forEach(System.out::println);
+        log.info("After delete:\n {}\n",
+                userService.getAllUsers().stream()
+                        .map(User::toString)
+                        .collect(Collectors.joining("\n")));
         var john = userRepo.findByUsername("john").get();
         log.info("Before update: {}", john);
 
@@ -59,7 +63,7 @@ public class Main {
         try {
             userService.updateUser(john);
             var johnAfterUpdate = userService.getUserById(john.getId());
-            log.info("After update: {}", johnAfterUpdate);
+            log.info("After update: {}\n", johnAfterUpdate);
         } catch (NonexistingEntityException | InvalidEntityDataException e) {
             log.error("Error updating user: " + john.getUsername(), e);
         }
@@ -67,7 +71,7 @@ public class Main {
         // delete user
         try {
             userService.deleteUserById(john.getId());
-            log.info("After delete:\n {}",
+            log.info("After delete:\n {}\n",
                     userService.getAllUsers().stream()
                             .map(User::toString)
                             .collect(Collectors.joining("\n")));

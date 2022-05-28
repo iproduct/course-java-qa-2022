@@ -45,10 +45,10 @@ public class InvalidEntityDataException extends Exception {
     }
 
     @Override
-    public String toString() {
-        return new StringJoiner(", ", InvalidEntityDataException.class.getSimpleName() + "[", "]")
+    public String getMessage() {
+        return new StringJoiner(", ")
+                .add(super.getMessage())
                 .add("violations=" + violations)
-                .add(super.toString())
                 .toString();
     }
 }
