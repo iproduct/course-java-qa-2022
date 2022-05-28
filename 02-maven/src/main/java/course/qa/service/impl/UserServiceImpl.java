@@ -6,11 +6,13 @@ import course.qa.exception.NonexistingEntityException;
 import course.qa.model.User;
 import course.qa.service.UserService;
 import course.qa.util.UserValidator;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
     private UserValidator userValidator;
@@ -39,7 +41,9 @@ public class UserServiceImpl implements UserService {
         userValidator.validate(user);
         user.setCreated(LocalDateTime.now());
         user.setModified(LocalDateTime.now());
-        return userRepo.create(user);
+        var created =  userRepo.create(user);
+        log.debug("User '{}: {}' created successfully", created.getId(), created.getUsername());
+        return created;
     }
 
     @Override
