@@ -11,13 +11,17 @@ import course.qa.model.User;
 import course.qa.service.UserService;
 import course.qa.service.impl.UserServiceImpl;
 import course.qa.util.UserValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static course.qa.model.Role.AUTHOR;
 
 public class Main {
     public static void main(String[] args) {
+        Logger log =  LoggerFactory.getLogger(Main.class);
         // Users demo
         List<User> users = List.of(
                 new User("Ivan", "Petrov", 28, "ivan", "Ivan123#"),
@@ -36,7 +40,7 @@ public class Main {
         try {
             userService.addUsersBatch(users);
         } catch (InvalidEntityDataException e) {
-            e.printStackTrace();
+            log.error("Error creating default users", e);
         }
 
 //        for(User user: userRepo.findAll()){
@@ -45,7 +49,7 @@ public class Main {
 //        userRepo.findAll().forEach(user -> System.out.println(user));
         userService.getAllUsers().forEach(System.out::println);
         var john = userRepo.findByUsername("john").get();
-        System.out.println("\nBefore update: " + john);
+        log.info("Before update: {}", john);
 
         //update user data
         john.setRole(AUTHOR);
@@ -55,18 +59,21 @@ public class Main {
         try {
             userService.updateUser(john);
             var johnAfterUpdate = userService.getUserById(john.getId());
-            System.out.println("After update: " + johnAfterUpdate);
+            log.info("After update: {}", johnAfterUpdate);
         } catch (NonexistingEntityException | InvalidEntityDataException e) {
-            e.printStackTrace();
+            log.error("Error updating user: " + john.getUsername(), e);
         }
 
         // delete user
         try {
             userService.deleteUserById(john.getId());
-            System.out.println("\nAfter delete:");
-            userService.getAllUsers().forEach(System.out::println);
+            log.info("After delete:\n {}",
+                    userService.getAllUsers().stream()
+                            .map(User::toString)
+                            .collect(Collectors.joining("\n")));
+
         } catch (NonexistingEntityException e) {
-            e.printStackTrace();
+            log.error("Error deleting user by ID: " + john.getId(), e);
         }
     }
 }
