@@ -5,13 +5,16 @@ import course.qa.spring.exception.InvalidEntityDataException;
 import course.qa.spring.exception.NonexistingEntityException;
 import course.qa.spring.model.User;
 import course.qa.spring.service.UserService;
-import course.qa.util.UserValidator;
+import course.qa.spring.util.EntityValidator;
+import course.qa.spring.util.UserValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 @Slf4j
 public class UserServiceImpl implements UserService {
     private UserRepository userRepo;

@@ -1,13 +1,15 @@
-package course.qa.util;
+package course.qa.spring.util;
 
 import course.qa.spring.exception.ConstraintViolation;
 import course.qa.spring.exception.InvalidEntityDataException;
 import course.qa.spring.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Component
 public class UserValidator implements EntityValidator<User> {
     public static final String USERNAME_REGEX = "\\w{2,15}";
 

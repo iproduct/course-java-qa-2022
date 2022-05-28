@@ -1,4 +1,4 @@
-package course.qa.util;
+package course.qa.spring.util;
 
 import course.qa.spring.exception.InvalidEntityDataException;
 
