@@ -1,6 +1,6 @@
-package course.qa.dao.impl;
+package course.qa.spring.dao.impl;
 
-import course.qa.dao.IdGenerator;
+import course.qa.spring.dao.IdGenerator;
 
 import java.util.concurrent.atomic.AtomicLong;
 

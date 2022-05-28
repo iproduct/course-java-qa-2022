@@ -1,8 +1,8 @@
-package course.qa.service;
+package course.qa.spring.service;
 
-import course.qa.exception.InvalidEntityDataException;
-import course.qa.exception.NonexistingEntityException;
-import course.qa.model.User;
+import course.qa.spring.exception.InvalidEntityDataException;
+import course.qa.spring.exception.NonexistingEntityException;
+import course.qa.spring.model.User;
 
 import java.util.List;
 

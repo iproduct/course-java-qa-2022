@@ -1,4 +1,4 @@
-package course.qa.dao;
+package course.qa.spring.dao;
 
 import java.util.List;
 import java.util.Optional;

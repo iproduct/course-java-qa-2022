@@ -1,6 +1,6 @@
-package course.qa.model;
+package course.qa.spring.model;
 
-import course.qa.dao.Identifiable;
+import course.qa.spring.dao.Identifiable;
 
 import java.time.LocalDateTime;
 import java.util.StringJoiner;

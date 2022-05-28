@@ -1,6 +1,6 @@
-package course.qa.dao;
+package course.qa.spring.dao;
 
-import course.qa.model.User;
+import course.qa.spring.model.User;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package course.qa.dao;
+package course.qa.spring.dao;
 
 public interface Identifiable<K> {
     K getId();

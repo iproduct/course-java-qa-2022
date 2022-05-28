@@ -1,4 +1,4 @@
-package course.qa.model;
+package course.qa.spring.model;
 
 public enum Role {
     READER, AUTHOR, ADMIN

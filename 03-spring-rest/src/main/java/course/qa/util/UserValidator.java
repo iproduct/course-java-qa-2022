@@ -1,8 +1,8 @@
 package course.qa.util;
 
-import course.qa.exception.ConstraintViolation;
-import course.qa.exception.InvalidEntityDataException;
-import course.qa.model.User;
+import course.qa.spring.exception.ConstraintViolation;
+import course.qa.spring.exception.InvalidEntityDataException;
+import course.qa.spring.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

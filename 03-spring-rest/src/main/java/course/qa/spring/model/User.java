@@ -1,13 +1,11 @@
-package course.qa.model;
+package course.qa.spring.model;
 
 import java.util.StringJoiner;
-
-import static course.qa.model.Role.READER;
 
 public class User extends Person {
     private String username;
     private String password;
-    private Role role = READER;
+    private Role role = Role.READER;
     private String phone;
     private boolean active  = true;
 

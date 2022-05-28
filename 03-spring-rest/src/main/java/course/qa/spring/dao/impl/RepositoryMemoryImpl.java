@@ -1,8 +1,8 @@
-package course.qa.dao.impl;
+package course.qa.spring.dao.impl;
 
-import course.qa.dao.IdGenerator;
-import course.qa.dao.Identifiable;
-import course.qa.dao.Repository;
+import course.qa.spring.dao.IdGenerator;
+import course.qa.spring.dao.Identifiable;
+import course.qa.spring.dao.Repository;
 
 import java.util.*;
 

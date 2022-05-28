@@ -1,10 +1,10 @@
-package course.qa.service.impl;
+package course.qa.spring.service.impl;
 
-import course.qa.dao.UserRepository;
-import course.qa.exception.InvalidEntityDataException;
-import course.qa.exception.NonexistingEntityException;
-import course.qa.model.User;
-import course.qa.service.UserService;
+import course.qa.spring.dao.UserRepository;
+import course.qa.spring.exception.InvalidEntityDataException;
+import course.qa.spring.exception.NonexistingEntityException;
+import course.qa.spring.model.User;
+import course.qa.spring.service.UserService;
 import course.qa.util.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 

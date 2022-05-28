@@ -1,4 +1,4 @@
-package course.qa.exception;
+package course.qa.spring.exception;
 
 import java.util.List;
 import java.util.StringJoiner;
