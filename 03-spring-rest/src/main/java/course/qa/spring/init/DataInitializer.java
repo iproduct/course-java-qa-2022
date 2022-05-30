@@ -10,7 +10,7 @@ import static course.qa.spring.model.Role.AUTHOR;
 import static course.qa.spring.model.Role.READER;
 
 public class DataInitializer implements CommandLineRunner {
-    public static final List<User> DEFAULT = List.of(
+    public static final List<User> DEFAULT_USERS = List.of(
             new User("Default", "Admin", 20, "admin", "Admin123#"),
             new User("John", "Doe", 42, "john", "John123#", READER,
                     "+(1) 23424242323", true),
