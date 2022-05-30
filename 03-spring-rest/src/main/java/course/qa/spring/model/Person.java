@@ -2,10 +2,17 @@ package course.qa.spring.model;
 
 import course.qa.spring.dao.Identifiable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 import java.util.StringJoiner;
 
+@MappedSuperclass
 public class Person implements Identifiable<Long> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;

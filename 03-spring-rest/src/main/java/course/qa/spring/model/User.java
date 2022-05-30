@@ -1,10 +1,15 @@
 package course.qa.spring.model;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.StringJoiner;
 
+@Entity
 public class User extends Person {
     private String username;
     private String password;
+    @Enumerated(EnumType.STRING)
     private Role role = Role.READER;
     private String phone;
     private boolean active  = true;
