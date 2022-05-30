@@ -1,10 +1,12 @@
 package course.qa.spring.exception;
 
+import course.qa.spring.model.ConstraintViolation;
+
 import java.util.List;
 import java.util.StringJoiner;
 
 public class InvalidEntityDataException extends RuntimeException {
-    private List<ConstraintViolation> violations;
+    private List<ConstraintViolation> violations = List.of();
 
     public InvalidEntityDataException() {
     }
@@ -45,7 +47,7 @@ public class InvalidEntityDataException extends RuntimeException {
     }
 
     @Override
-    public String getMessage() {
+    public String toString() {
         return new StringJoiner(", ")
                 .add(super.getMessage())
                 .add("violations=" + violations)

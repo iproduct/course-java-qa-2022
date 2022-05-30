@@ -1,6 +1,6 @@
 package course.qa.spring.util;
 
-import course.qa.spring.exception.ConstraintViolation;
+import course.qa.spring.model.ConstraintViolation;
 import course.qa.spring.exception.InvalidEntityDataException;
 import course.qa.spring.model.User;
 import org.springframework.stereotype.Component;

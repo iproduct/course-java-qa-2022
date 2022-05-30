@@ -1,5 +1,6 @@
 package course.qa.spring.service.impl;
 
+import course.qa.spring.dao.UserJpaRepository;
 import course.qa.spring.dao.UserRepository;
 import course.qa.spring.exception.InvalidEntityDataException;
 import course.qa.spring.exception.NonexistingEntityException;
@@ -17,10 +18,10 @@ import java.util.List;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepo;
+    private UserJpaRepository userRepo;
     private UserValidator userValidator;
 
-    public UserServiceImpl(UserRepository userRepo, UserValidator userValidator) {
+    public UserServiceImpl(UserJpaRepository userRepo, UserValidator userValidator) {
         this.userRepo = userRepo;
         this.userValidator = userValidator;
     }
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
         userValidator.validate(user);
         user.setCreated(LocalDateTime.now());
         user.setModified(LocalDateTime.now());
-        var created =  userRepo.create(user);
+        var created =  userRepo.save(user);
 //        log.debug("User '{}: {}' created successfully", created.getId(), created.getUsername());
         return created;
     }
@@ -60,16 +61,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) throws NonexistingEntityException, InvalidEntityDataException {
+        User old = getUserById(user.getId());
         userValidator.validate(user);
         user.setModified(LocalDateTime.now());
-        return userRepo.update(user)
-                .orElseThrow(() -> new NonexistingEntityException("User does not exist: " + user));
+        return userRepo.save(user);
     }
 
     @Override
     public User deleteUserById(Long id) throws NonexistingEntityException {
-        return userRepo.deleteById(id)
-                .orElseThrow(() -> new NonexistingEntityException("User with ID='" + id + "' does not exist"));
+        User old = getUserById(id);
+        userRepo.deleteById(id);
+        return old;
     }
 
     @Override
