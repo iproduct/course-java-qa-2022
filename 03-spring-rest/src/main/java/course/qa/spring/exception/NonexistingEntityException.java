@@ -1,6 +1,6 @@
 package course.qa.spring.exception;
 
-public class NonexistingEntityException extends Exception {
+public class NonexistingEntityException extends RuntimeException {
     public NonexistingEntityException() {
     }
 

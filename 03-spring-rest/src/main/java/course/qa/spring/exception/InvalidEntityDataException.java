@@ -3,7 +3,7 @@ package course.qa.spring.exception;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class InvalidEntityDataException extends Exception {
+public class InvalidEntityDataException extends RuntimeException {
     private List<ConstraintViolation> violations;
 
     public InvalidEntityDataException() {

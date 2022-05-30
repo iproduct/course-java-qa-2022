@@ -38,7 +38,6 @@ public class DataInitializer implements CommandLineRunner {
             var created = userService.addUsersBatch(DEFAULT_USERS);
             log.info("Default users created:\n{}",
                     created.stream().map(User::toString).collect(Collectors.joining("\n")));
-            created.forEach(System.out::println);
         }
     }
 }

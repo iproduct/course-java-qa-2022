@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         user.setCreated(LocalDateTime.now());
         user.setModified(LocalDateTime.now());
         var created =  userRepo.create(user);
-        log.debug("User '{}: {}' created successfully", created.getId(), created.getUsername());
+//        log.debug("User '{}: {}' created successfully", created.getId(), created.getUsername());
         return created;
     }
 
