@@ -10,4 +10,8 @@ public class Calculator {
     public int divide(int x, int y) {
         return x / y;
     }
+
+    public int power(int x, int y) {
+        return (int) Math.pow(x, y);
+    }
 }

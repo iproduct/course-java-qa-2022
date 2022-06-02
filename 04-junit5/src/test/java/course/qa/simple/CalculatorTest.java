@@ -1,31 +1,33 @@
 package course.qa.simple;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 @Slf4j
 public class CalculatorTest {
     private Calculator calculator;
 
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         log.info("Before all tests in a class");
     }
 
-    @AfterClass
+    @AfterAll
     public static void destroy() {
         log.info("After all tests in a class");
     }
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         log.info("Before test method");
         calculator = new Calculator();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         log.info("After test method");
         calculator = null;
@@ -38,7 +40,7 @@ public class CalculatorTest {
         int actual = calculator.add(5, 8);
 
         //verify (assert, post-condition)
-        assertEquals("Regular addition should work", 13, actual);
+        assertEquals(13, actual, "Regular addition should work");
     }
 
     @Test
@@ -48,7 +50,7 @@ public class CalculatorTest {
         int actual = calculator.multiply(5, 8);
 
         //verify (assert, post-condition)
-        assertEquals("Regular multiplication should work", 40, actual);
+        assertEquals(40, actual, "Regular multiplication should work");
     }
 
     @Test
@@ -58,14 +60,15 @@ public class CalculatorTest {
         int actual = calculator.divide(42, 5);
 
         //verify (assert, post-condition)
-        assertEquals("Regular division should work", 8, actual);
+        assertEquals(8, actual, "Regular division should work");
 
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void givenXandZeroDivider_whenDivide_thenArtithmeticExceptionThrown() {
         log.info("Testing divide by zero()");
         //test (action)
-        int actual = calculator.divide(42, 0);
+        var exception  = assertThrows(ArithmeticException.class, () -> calculator.divide(42, 0));
+        assertEquals("/ by zero", exception.getMessage(), "Message should be '/ by zero'");
     }
 }
