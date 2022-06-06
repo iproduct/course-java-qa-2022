@@ -27,7 +27,7 @@ public class AssumptionDemo {
     @Test
     void testInAllEnvironments() {
         assumingThat("CI".equals(System.getenv("ENV")),
-                () -> assertEquals(42, calculator.multiply(6, 7)));
+                () -> assertEquals(41, calculator.multiply(6, 7)));
 
         assumingThat("DEV".equals(System.getenv("ENV")),
                 () -> assertEquals(BigInteger.valueOf(1000000007), calculator.generateNextPrime(BigInteger.valueOf(1000000000))));
