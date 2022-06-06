@@ -1,10 +1,7 @@
 package course.qa.simple;
 
 import jdk.jfr.Description;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
@@ -13,6 +10,8 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+@Tag("fast")
+@Tag("service")
 class StringUtilsTest {
 
     @ParameterizedTest(name = "#{index}: Given {0} isPalindrome -> true")
