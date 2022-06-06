@@ -4,7 +4,10 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import course.qa.dao.impl.LongIdGenerator;
+import course.qa.dao.impl.UserRepositoryMemoryImpl;
 import course.qa.model.User;
+import course.qa.util.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
@@ -13,6 +16,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
@@ -34,39 +38,43 @@ class UserServiceImplTest {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-//        SAMPLE_USERS
     }
 
-    @Test
-    void getAllUsers() {
-    }
-
-    @Test
-    void getUserById() {
-    }
+//    @Test
+//    void getAllUsers() {
+//    }
+//
+//    @Test
+//    void getUserById() {
+//    }
 
     @TestFactory
-    Collection<DynamicNode> addUser() {
-        return List.of(
-                dynamicTest("Create user with default data", () -> {
-//                    var created =
+    Stream<DynamicTest> addUser() {
+        return SAMPLE_USERS.stream().map(user ->
+                dynamicTest("Create user with JSON file data '" + user.getUsername() + "'", () -> {
+                    var userService = new UserServiceImpl(
+                            new UserRepositoryMemoryImpl(new LongIdGenerator()), new UserValidator());
+                    User actual = userService.addUser(user);
+                    assertNotNull(actual);
+                    assertNotNull(actual.getId());
+                    assertEquals(Long.valueOf(1L), actual.getId());
                 })
         );
     }
 
-    @Test
-    void addUsersBatch() {
-    }
-
-    @Test
-    void updateUser() {
-    }
-
-    @Test
-    void deleteUserById() {
-    }
-
-    @Test
-    void count() {
-    }
+//    @Test
+//    void addUsersBatch() {
+//    }
+//
+//    @Test
+//    void updateUser() {
+//    }
+//
+//    @Test
+//    void deleteUserById() {
+//    }
+//
+//    @Test
+//    void count() {
+//    }
 }

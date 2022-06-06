@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "firstName": "Default",
     "lastName": "Admin",
     "age": 20,
@@ -13,7 +12,6 @@
     "active": true
   },
   {
-    "id": 2,
     "firstName": "John",
     "lastName": "Doe",
     "age": 42,
@@ -26,7 +24,6 @@
     "active": true
   },
   {
-    "id": 3,
     "firstName": "Jane",
     "lastName": "Doe",
     "age": 34,
