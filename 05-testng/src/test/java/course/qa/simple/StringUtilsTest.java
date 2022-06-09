@@ -10,8 +10,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-@Tag("fast")
-@Tag("service")
+
 class StringUtilsTest {
 
     @ParameterizedTest(name = "#{index}: Given {0} isPalindrome -> true")
