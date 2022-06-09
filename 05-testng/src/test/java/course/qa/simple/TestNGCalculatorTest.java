@@ -13,24 +13,24 @@ import static org.testng.Assert.assertEquals;
 public class TestNGCalculatorTest {
     private Calculator calculator;
 
-    @BeforeClass
-    public static void init() {
+    @BeforeClass(alwaysRun = true)
+    public void init() {
         log.info("Before all tests in a class");
     }
 
-    @AfterClass
-    public static void destroy() {
+    @AfterClass(alwaysRun = true)
+    public void destroy() {
         log.info("After all tests in a class");
     }
 
 
-    @BeforeMethod(groups = {"simple", "success", "fast", "slow"})
+    @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         log.info("Before test method");
         calculator = new Calculator();
     }
 
-    @AfterMethod(groups = {"simple", "success", "fast"})
+    @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         log.info("After test method");
         calculator = null;
