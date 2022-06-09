@@ -2,15 +2,10 @@ package course.qa.simple;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.EmptyStackException;
-import java.util.List;
 import java.util.Stack;
 
 import static org.testng.Assert.assertFalse;
@@ -18,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 @Slf4j
-public class TestingAStackDemo {
+public class TestNGStack {
     Stack<Object> stack;
     String anElement = "an element";
 
