@@ -1,19 +1,15 @@
 package course.qa.service.impl;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import course.qa.dao.impl.LongIdGenerator;
-import course.qa.dao.impl.UserRepositoryMemoryImpl;
 import course.qa.model.User;
-import course.qa.util.UserValidator;
+import course.qa.service.impl.stubs.UserRepositoryStub;
+import course.qa.service.impl.stubs.UserValidatorStub;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,14 +47,27 @@ class UserServiceImplTest {
     @TestFactory
     Stream<DynamicTest> addUser() {
         return SAMPLE_USERS.stream().map(user ->
-                dynamicTest("Create user with JSON file data '" + user.getUsername() + "'", () -> {
-                    var userService = new UserServiceImpl(new UserRepositoryStub(), new UserValidatorStub() );
+                        dynamicTest("Create user with JSON file data '" + user.getUsername() + "'", () -> {
+                            var userService = new UserServiceImpl(new UserRepositoryStub(), new UserValidatorStub() );
 //                            new UserRepositoryMemoryImpl(new LongIdGenerator()), new UserValidator());
-                    User actual = userService.addUser(user);
-                    assertNotNull(actual);
-                    assertNotNull(actual.getId());
-                    assertEquals(Long.valueOf(1L), actual.getId());
-                })
+                            User actual = userService.addUser(user);
+                            assertNotNull(actual);
+                            assertNotNull(actual.getId());
+                            assertEquals(Long.valueOf(1L), actual.getId());
+                        })
+        );
+    }
+
+    @TestFactory
+    Stream<DynamicTest> addUserMockito() {
+        return SAMPLE_USERS.stream().map(user ->
+                        dynamicTest("Create user with JSON file data '" + user.getUsername() + "'", () -> {
+                            var userService = new UserServiceImpl(new UserRepositoryStub(), new UserValidatorStub() );
+                            User actual = userService.addUser(user);
+                            assertNotNull(actual);
+                            assertNotNull(actual.getId());
+                            assertEquals(Long.valueOf(1L), actual.getId());
+                        })
         );
     }
 

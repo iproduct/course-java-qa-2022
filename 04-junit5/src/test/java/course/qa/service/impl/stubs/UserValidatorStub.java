@@ -1,4 +1,4 @@
-package course.qa.service.impl;
+package course.qa.service.impl.stubs;
 
 import course.qa.exception.InvalidEntityDataException;
 import course.qa.model.User;

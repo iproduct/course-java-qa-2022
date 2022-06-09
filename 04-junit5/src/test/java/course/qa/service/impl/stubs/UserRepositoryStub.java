@@ -1,4 +1,4 @@
-package course.qa.service.impl;
+package course.qa.service.impl.stubs;
 
 import course.qa.dao.UserRepository;
 import course.qa.model.User;
