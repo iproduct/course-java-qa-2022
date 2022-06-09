@@ -5,6 +5,7 @@ import course.qa.exception.InvalidEntityDataException;
 import course.qa.exception.NonexistingEntityException;
 import course.qa.model.User;
 import course.qa.service.UserService;
+import course.qa.util.EntityValidator;
 import course.qa.util.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,9 +16,9 @@ import java.util.List;
 @Slf4j
 public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
-    private UserValidator userValidator;
+    private EntityValidator<User> userValidator;
 
-    public UserServiceImpl(UserRepository userRepo, UserValidator userValidator) {
+    public UserServiceImpl(UserRepository userRepo, EntityValidator<User> userValidator) {
         this.userRepo = userRepo;
         this.userValidator = userValidator;
     }

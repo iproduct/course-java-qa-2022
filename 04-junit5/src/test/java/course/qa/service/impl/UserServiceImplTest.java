@@ -52,8 +52,8 @@ class UserServiceImplTest {
     Stream<DynamicTest> addUser() {
         return SAMPLE_USERS.stream().map(user ->
                 dynamicTest("Create user with JSON file data '" + user.getUsername() + "'", () -> {
-                    var userService = new UserServiceImpl(
-                            new UserRepositoryMemoryImpl(new LongIdGenerator()), new UserValidator());
+                    var userService = new UserServiceImpl(new UserRepositoryStub(), new UserValidatorStub() );
+//                            new UserRepositoryMemoryImpl(new LongIdGenerator()), new UserValidator());
                     User actual = userService.addUser(user);
                     assertNotNull(actual);
                     assertNotNull(actual.getId());
