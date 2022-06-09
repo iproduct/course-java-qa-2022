@@ -35,7 +35,7 @@ public class FirstScriptTest {
         WebElement searchButton = driver.findElement(By.id("search_icon"));
 
         searchBox.sendKeys("Selenium");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.of(5, ChronoUnit.SECONDS));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.of(10, ChronoUnit.SECONDS));
         wait.until(ExpectedConditions.visibilityOf(searchButton));
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
