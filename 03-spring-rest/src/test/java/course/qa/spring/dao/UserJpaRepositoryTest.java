@@ -16,6 +16,7 @@ import static course.qa.spring.model.Role.AUTHOR;
 import static course.qa.spring.model.Role.READER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 @TestPropertySource("/application-test.properties")
@@ -28,7 +29,6 @@ class UserJpaRepositoryTest {
     @BeforeEach
     void setUp() {
         userRepo.saveAll(DEFAULT_USERS);
-//        DEFAULT_USERS.forEach(userRepo::save);
     }
 
     @AfterEach
@@ -47,7 +47,10 @@ class UserJpaRepositoryTest {
 
     @Test
     void findByUsername() {
-        assertThat(null, nullValue());
+        var actual = userRepo.findByUsername(DEFAULT_USERS.get(2).getUsername());
+        assertTrue(actual.isPresent());
+        assertThat(actual.get(),
+                samePropertyValuesAs(EXPECTED_USERS.get(2),  "id", "created", "modified"));
     }
 
     public static final List<User> DEFAULT_USERS = List.of(
