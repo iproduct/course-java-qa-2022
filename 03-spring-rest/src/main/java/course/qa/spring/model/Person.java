@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 @MappedSuperclass
 public class Person implements Identifiable<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
