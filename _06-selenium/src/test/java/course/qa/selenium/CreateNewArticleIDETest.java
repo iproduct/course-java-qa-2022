@@ -34,9 +34,9 @@ public class CreateNewArticleIDETest {
     }
 
     @Test
-    public void listallarticles() {
+    public void createNewArticle() {
         driver.get("https://localhost:8081/articles");
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
         driver.manage().window().setSize(new Dimension(1722, 936));
         driver.findElement(By.linkText("Add Article")).click();
         driver.findElement(By.id("title")).click();

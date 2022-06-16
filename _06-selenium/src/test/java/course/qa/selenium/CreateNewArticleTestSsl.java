@@ -40,7 +40,7 @@ public class CreateNewArticleTestSsl {
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         driver.get("https://localhost:8081/articles");
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
         // 2 | setWindowSize | 1722x936 |
         driver.manage().window().setSize(new Dimension(1722, 936));
         // 3 | click | linkText=Add Article |
