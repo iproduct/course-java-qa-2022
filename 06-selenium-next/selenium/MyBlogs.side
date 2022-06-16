@@ -1,0 +1,21 @@
+{
+  "id": "d210e816-2dae-429e-8e5b-baaef067e4a0",
+  "version": "2.0",
+  "name": "MyBlogs",
+  "url": "",
+  "tests": [{
+    "id": "24d50ed0-ddc8-4ef6-8faf-78b528b180cb",
+    "name": "List all articles",
+    "commands": []
+  }],
+  "suites": [{
+    "id": "381a35e4-6da9-400b-9753-e2e51b24a84d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": [],
+  "plugins": []
+}

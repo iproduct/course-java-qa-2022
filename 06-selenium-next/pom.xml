@@ -55,6 +55,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.33</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.2.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
