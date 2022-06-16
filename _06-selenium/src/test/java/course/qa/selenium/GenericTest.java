@@ -98,7 +98,7 @@ public class GenericTest {
         // Navigate to Url
         driver.get("https://localhost:8081/");
 //        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+//        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
         // Store 'Gmail' anchor web element
         List<WebElement> linksAddArticle = driver.findElements(By.linkText("Add Article"));
