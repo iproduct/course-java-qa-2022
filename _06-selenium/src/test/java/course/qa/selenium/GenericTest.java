@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,35 +30,37 @@ public class GenericTest {
         driver.quit();
     }
 
-    @ParameterizedTest
-    @ValueSource(classes = { ChromeDriver.class, FirefoxDriver.class })
-    void test(Class<? extends WebDriver> webDriverClass) {
-        // Driver management and WebDriver instantiation
-        driver = WebDriverManager.getInstance(webDriverClass).create();
-
-        // Exercise
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
-        String title = driver.getTitle();
-
-        // Verify
-        assertThat(title).contains("Selenium WebDriver");
-    }
+//    @ParameterizedTest
+//    @ValueSource(classes = { ChromeDriver.class, FirefoxDriver.class })
+//    void test(Class<? extends WebDriver> webDriverClass) {
+//        // Driver management and WebDriver instantiation
+//        driver = WebDriverManager.getInstance(webDriverClass).create();
+//
+//        // Exercise
+//        driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
+//        String title = driver.getTitle();
+//
+//        // Verify
+//        assertThat(title).contains("Selenium WebDriver");
+//    }
 
     @ParameterizedTest
     @ValueSource(classes = { ChromeDriver.class, FirefoxDriver.class })
     void whenHomePageLoaded_thenTitleArticlesListAndLocationArticles(Class<? extends WebDriver> webDriverClass) {
         // Driver management and WebDriver instantiation
-        driver = WebDriverManager.getInstance(webDriverClass).create();
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = WebDriverManager.getInstance(webDriverClass).capabilities(options).create();
 
         // Exercise
-        driver.get("http://localhost:8081/");
+        driver.get("https://localhost:8081/");
         String title = driver.getTitle();
         String location = driver.getCurrentUrl();
 //        JavascriptExecutor jse = (JavascriptExecutor)driver;
 //        String location = (String)jse.executeScript("return window.location.href;");
 
         // Verify
-        assertThat(location).isEqualTo("http://localhost:8081/articles");
+        assertThat(location).isEqualTo("https://localhost:8081/articles");
         assertThat(title).isEqualTo("Articles List");
     }
 
@@ -66,7 +69,9 @@ public class GenericTest {
     @DisplayName("When home page is loaded, then h3 header should be 'ArticlesList'")
     void whenHomePageLoaded_thenH3IsArticlesList(Class<? extends WebDriver> webDriverClass) {
         // Driver management and WebDriver instantiation
-        driver = WebDriverManager.getInstance(webDriverClass).create();
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = WebDriverManager.getInstance(webDriverClass).capabilities(options).create();
 
         // Exercise
         driver.get("http://localhost:8081/");
@@ -85,11 +90,13 @@ public class GenericTest {
     @DisplayName("When home page is loaded, then click 'Add Article' link, submit new article, and verify all articles")
     void whenHomePageLoaded_thenClickOnAddArticleLinkAndAddNewArticle(Class<? extends WebDriver> webDriverClass) {
         // Driver management and WebDriver instantiation
-        driver = WebDriverManager.getInstance(webDriverClass).create();
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = WebDriverManager.getInstance(webDriverClass).capabilities(options).create();
 
         // Exercise
         // Navigate to Url
-        driver.get("http://localhost:8081/");
+        driver.get("https://localhost:8081/");
 //        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
